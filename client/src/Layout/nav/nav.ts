@@ -4,6 +4,7 @@ import { AccountService } from '../../Core/services/account-service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToastService } from '../../Core/services/toast-service';
 import { themes } from '../theme';
+import { BusyService } from '../../Core/services/busy-service';
 
 @Component({
   selector: 'app-nav',
@@ -19,6 +20,7 @@ export class Nav implements OnInit {
   private toast = inject(ToastService);
   protected selectedTheme = signal<string>(localStorage.getItem('theme') || 'light');
   protected themes = themes;
+  protected busyService = inject(BusyService);
 
   ngOnInit(): void {
     document.documentElement.setAttribute('data-theme', this.selectedTheme())
